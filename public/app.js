@@ -83,6 +83,14 @@ async function handleRouting() {
 }
 
 function showView(viewName) {
+    // Menghentikan video & suara, tapi tetap menyimpan posisi menit terakhir di browser
+    if (viewName !== 'player' && views.player) {
+        const iframe = views.player.querySelector('iframe');
+        if (iframe) {
+            iframe.src = '';
+        }
+    }
+
     Object.keys(views).forEach(key => {
         if (views[key]) {
             views[key].style.display = key === viewName ? 'block' : 'none';
