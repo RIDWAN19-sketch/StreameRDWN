@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreameRDWN - Nonton Film Online</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">StreameRDWN</a>
+            
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Cari film favorit...">
+                <button id="search-btn">Cari</button>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#category/popular" data-category="popular">Populer</a>
+                <a href="#category/now-playing" data-category="now-playing">Sedang Tayang</a>
+                <a href="#category/top-rated" data-category="top-rated">Rating Tinggi</a>
+                <a href="#category/upcoming" data-category="upcoming">Segera Tayang</a>
+            </nav>
+
+            <select id="genre-select">
+                <option value="">Pilih Genre</option>
+                <option value="28">Action</option>
+                <option value="12">Adventure</option>
+                <option value="16">Animation</option>
+                <option value="35">Comedy</option>
+                <option value="80">Crime</option>
+                <option value="99">Documentary</option>
+                <option value="18">Drama</option>
+                <option value="10751">Family</option>
+                <option value="14">Fantasy</option>
+                <option value="36">History</option>
+                <option value="27">Horror</option>
+                <option value="10402">Music</option>
+                <option value="9648">Mystery</option>
+                <option value="10749">Romance</option>
+                <option value="878">Sci-Fi</option>
+                <option value="53">Thriller</option>
+            </select>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Section Home -->
+        <section id="home-view" class="view">
+            <h2 id="section-title">Rekomendasi Film</h2>
+            <div id="movie-grid" class="movie-grid"></div>
+        </section>
+
+        <!-- Section Detail -->
+        <section id="detail-view" class="view" style="display: none;"></section>
+
+        <!-- Section Player Video -->
+        <section id="player-view" class="view" style="display: none;"></section>
+    </main>
+
+    <script src="/app.js"></script>
+</body>
+</html>

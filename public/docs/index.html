@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineStream API Docs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #141414;
+      --bg2: #1e1e1e;
+      --accent: #e50914;
+      --text: #e0e0e0;
+      --border: #333;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 30px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1 {
+      color: #fff;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 10px;
+    }
+    .endpoint {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+    .endpoint-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .method {
+      background: #28a745;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .url {
+      font-family: monospace;
+      font-size: 16px;
+      color: #58a6ff;
+    }
+    .params {
+      margin-bottom: 15px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    input {
+      background: #2a2a2a;
+      border: 1px solid #444;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    button:hover {
+      opacity: 0.8;
+    }
+    pre {
+      background: #000;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      border: 1px solid #222;
+      color: #a5d6ff;
+      max-height: 400px;
+      font-size: 13px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🎬 CineStream API Documentation</h1>
+  <p>Halaman ini digunakan untuk menguji fungsionalitas Backend REST API lokal.</p>
+
+  <!-- 0. Home (Random Mix) -->
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="url">/api/movies/home</span>
+    </div>
+    <div class="params">
+      <input type="number" id="homePage" placeholder="Halaman (opsional)" min="1">
+      <button onclick="testAPI(this, '/api/movies/home?page=' + (document.getElementById('homePage').value || 1))">Test Endpoint</button>
+    </div>
+    <pre></pre>
+  </div>
+
+  <!-- 1. Popular -->
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="url">/api/movies/popular</span>
+    </div>
+    <div class="params">
+      <input type="number" id="pagePopular" placeholder="Page" value="1" style="width: 60px">
+      <button onclick="testAPI(this, '/api/movies/popular?page=' + document.getElementById('pagePopular').value)">Test Endpoint</button>
+    </div>
+    <pre></pre>
+  </div>
+
+  <!-- 2. Now Playing -->
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="url">/api/movies/now-playing</span>
+    </div>
+    <div class="params">
+      <input type="number" id="pageNow" placeholder="Page" value="1" style="width: 60px">
+      <button onclick="testAPI(this, '/api/movies/now-playing?page=' + document.getElementById('pageNow').value)">Test Endpoint</button>
+    </div>
+    <pre></pre>
+  </div>
+
+  <!-- 3. Top Rated -->
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="url">/api/movies/top-rated</span>
+    </div>
+    <div class="params">
+      <input type="number" id="pageTop" placeholder="Page" value="1" style="width: 60px">
+      <button onclick="testAPI(this, '/api/movies/top-rated?page=' + document.getElementById('pageTop').value)">Test Endpoint</button>
+    </div>
+    <pre></pre>
+  </div>
+
+  <!-- 4. Upcoming -->
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="url">/api/movies/upcoming</span>
+    </div>
+    <div class="params">
+      <input type="number" id="pageUpcoming" placeholder="Page" value="1" style="width: 60px">
+      <button onclick="testAPI(this, '/api/movies/upcoming?page=' + document.getElementById('pageUpcoming').value)">Test Endpoint</button>
+    </div>
+    <pre></pre>
+  </div>
+
+  <!-- 5. Search -->
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="url">/api/movies/search</span>
+    </div>
+    <div class="params">
+      <input type="text" id="querySearch" placeholder="Keyword (contoh: avenger)" value="avenger">
+      <input type="number" id="pageSearch" placeholder="Page" value="1" style="width: 60px">
+      <button onclick="testAPI(this, '/api/movies/search?q=' + document.getElementById('querySearch').value + '&page=' + document.getElementById('pageSearch').value)">Test Endpoint</button>
+    </div>
+    <pre></pre>
+  </div>
+
+  <!-- 6. Discover (Genre) -->
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="url">/api/movies/discover</span>
+    </div>
+    <div class="params">
+      <input type="text" id="queryGenre" placeholder="ID Genre (contoh: 28 untuk Action)" value="28">
+      <input type="number" id="pageGenre" placeholder="Page" value="1" style="width: 60px">
+      <button onclick="testAPI(this, '/api/movies/discover?genre=' + document.getElementById('queryGenre').value + '&page=' + document.getElementById('pageGenre').value)">Test Endpoint</button>
+    </div>
+    <pre></pre>
+  </div>
+
+  <!-- 7. Detail -->
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="url">/api/movies/detail/:id</span>
+    </div>
+    <div class="params">
+      <input type="text" id="queryId" placeholder="ID Film (contoh: 550)" value="550">
+      <button onclick="testAPI(this, '/api/movies/detail/' + document.getElementById('queryId').value)">Test Endpoint</button>
+    </div>
+    <pre></pre>
+  </div>
+
+  <!-- 8. Play (Video Sources) -->
+  <div class="endpoint">
+    <div class="endpoint-header">
+      <span class="method">GET</span>
+      <span class="url">/api/movies/play/:id</span>
+    </div>
+    <div class="params">
+      <input type="text" id="playId" placeholder="ID Film (contoh: 550)" value="550">
+      <button onclick="testAPI(this, '/api/movies/play/' + document.getElementById('playId').value)">Test Endpoint</button>
+    </div>
+    <pre></pre>
+  </div>
+
+</div>
+
+<script>
+  async function testAPI(btn, url) {
+    const pre = btn.closest('.endpoint').querySelector('pre');
+    pre.style.display = 'block';
+    pre.textContent = 'Memuat data...';
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+    
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      pre.textContent = JSON.stringify(data, null, 2);
+    } catch (err) {
+      pre.textContent = 'Error: ' + err.message;
+    } finally {
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    }
+  }
+</script>
+
+</body>
+</html>
